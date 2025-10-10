@@ -50,13 +50,25 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Menu items found:', menuItems.length);
         console.log('Menu links found:', menuLinks.length);
         
+        // Check computed styles
+        if (menuItems.length > 0) {
+            const firstItem = menuItems[0];
+            const computedStyle = window.getComputedStyle(firstItem);
+            console.log('First item display:', computedStyle.display);
+            console.log('First item visibility:', computedStyle.visibility);
+            console.log('First item opacity:', computedStyle.opacity);
+            console.log('First item position:', computedStyle.position);
+        }
+        
         // Force visibility on menu items
-        menuItems.forEach(item => {
-            item.style.cssText = 'display: block !important; background: red !important; min-height: 60px !important; width: 100% !important;';
+        menuItems.forEach((item, index) => {
+            item.style.cssText = 'display: block !important; background: red !important; min-height: 60px !important; width: 100% !important; position: relative !important; z-index: 10000 !important;';
+            console.log(`Item ${index} styled`);
         });
         
-        menuLinks.forEach(link => {
-            link.style.cssText = 'display: block !important; background: yellow !important; color: black !important; padding: 20px !important; font-size: 20px !important; font-weight: bold !important;';
+        menuLinks.forEach((link, index) => {
+            link.style.cssText = 'display: block !important; background: yellow !important; color: black !important; padding: 20px !important; font-size: 20px !important; font-weight: bold !important; position: relative !important; z-index: 10001 !important;';
+            console.log(`Link ${index} styled`);
         });
         
         // Toggle menu
@@ -65,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const isActive = navMenu.classList.toggle('active');
             
             console.log('Menu toggled, active:', isActive);
+            console.log('Menu element:', navMenu);
+            console.log('Menu computed display:', window.getComputedStyle(navMenu).display);
+            console.log('Menu computed transform:', window.getComputedStyle(navMenu).transform);
             
             // Toggle icon
             const icon = this.querySelector('i');

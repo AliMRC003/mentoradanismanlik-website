@@ -112,10 +112,20 @@ body {
     transform: translateZ(0);
 }
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
+/* Desktop menu - hidden on mobile */
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+}
+
+/* Hide menu by default on mobile */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
 }
 
 .nav-link {
@@ -1095,8 +1105,9 @@ body {
         position: relative;
     }
     
-    /* Full page sidebar menu */
-    .nav-menu {
+    /* MOBILE MENU - Override ALL desktop styles */
+    .nav-menu,
+    ul.nav-menu {
         display: block !important;
         flex-direction: column !important;
         position: fixed !important;
@@ -1137,6 +1148,13 @@ body {
         background: #ffcccc !important;
         opacity: 1 !important;
         visibility: visible !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    .nav-menu.active li {
+        display: block !important;
     }
     
     .nav-menu li:first-child {
