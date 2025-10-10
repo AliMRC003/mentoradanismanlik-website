@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hikayemiz - Mentora</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="script.js" defer></script>
+    <!-- Critical CSS for logo preload -->
+    <style>
+        .header { contain: layout style paint; transform: translate3d(0,0,0); }
+        .logo { contain: layout style; font-display: swap; }
+        .logo i { font-display: swap; will-change: auto; }
+    </style>
+    <style>
+        /* Page-specific styles for story page */
+        .story-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 5rem;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .story-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .story-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 2;
+        }
+
+        .story-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .story-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .story-subtitle {
+            font-size: 1.2rem;
+            color: var(--white);
+            opacity: 0.95;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .story-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            text-align: justify;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .story-text p {
+            margin-bottom: 2rem;
+            text-indent: 1.5rem;
+            position: relative;
+        }
+
+        .story-text p:first-child {
+            text-indent: 1.5rem;
+        }
+
+        .student-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            margin: 2rem 0;
+        }
+
+        .student-image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .story-hero {
+                height: 55vh;
+                padding-top: 4rem;
+            }
+            
+            .story-title {
+                font-size: 2.2rem;
+            }
+            
+            .story-text {
+                text-align: left;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            
+            .student-image-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Mentora Danışmanlık</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Anasayfa</a></li>
+                        <li><a href="hikayemiz.html" class="nav-link active">Hikayemiz</a></li>
+                        <li><a href="basvuru.html" class="nav-link">Başvur</a></li>
+                    </ul>
+                    <div class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Story Hero Section -->
+    <section class="story-hero">
+        <div class="story-content">
+            <div class="container">
+                <h1 class="story-title">Mentora Hikayesi</h1>
+                <p class="story-subtitle">Hayallerin gerçek olduğu yer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Content Section -->
+    <section class="story-section">
+        <div class="container">
+            
+            <div class="story-text">
+                <p>
+                    2023 yılından itibaren öğrencilerin yurt dışı eğitim hayallerini gerçekleştiriyoruz. En uygun fiyatlarla sizi herhangi bir danışman ile değil, tüm zorlukları başarıyla aşmış olan ve hedefinizdeki üniversiteleri kazanmış olan öğrencilerle buluşturuyoruz.
+                </p>
+                
+                <p>
+                    Tüm işlemleri başarıyla tamamlamış olan bu öğrencilerimiz tüm adımlarda size eşlik ediyor ve her sorunuz için size yardımcı olmaya hazır! Yüksek ücretli danışmanlıklar yerine size uygun paketlerimizle hedefiniz için her adımda yanınızda oluyoruz!
+                </p>
+                
+                <div class="highlight-box">
+                    <h3>Bizim Farkımız</h3>
+                    <p>Öğrencilerimiz ile sürekli iletişimde olarak hedeflediğiniz yerlerde siz daha varmadan network oluşturmanızı sağlıyoruz!</p>
+                </div>
+                
+                <p>
+                    Mentora olarak, sadece bir danışmanlık hizmeti sunmakla kalmıyoruz. Aynı zamanda bir topluluk oluşturuyoruz. Her başarılı öğrencimiz, gelecekteki öğrencilerimiz için bir köprü görevi görmekte ve deneyimlerini paylaşmaktadır.
+                </p>
+                
+                <p>
+                    Hedefimiz, Türkiye'den yurt dışında eğitim almak isteyen her öğrencinin bu süreçte kendini yalnız hissetmemesi ve en doğru rehberliği alabilmesidir. Çünkü her öğrencinin hikayesi bizim için değerlidir ve her başarı hikayesi, yeni hayallerin gerçekleşmesine ilham verir.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Mentora</span>
+                </div>
+                <div class="footer-contact">
+                    <h4>İletişim</h4>
+                    <p><i class="fas fa-envelope"></i> info@mentora.com.tr</p>
+                    <p><i class="fas fa-phone"></i> +90 (555) 123 45 67</p>
+                    <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mentora. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // No navigation handling needed - let browser handle naturally
+        document.addEventListener('DOMContentLoaded', function() {
+            // Just close mobile menu if needed
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const mobileMenu = document.querySelector('.nav-menu');
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentora - Yurt Dışı Eğitim Danışmanlığı</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="script.js" defer></script>
+    <!-- Critical CSS for logo preload -->
+    <style>
+        .header { contain: layout style paint; transform: translate3d(0,0,0); }
+        .logo { contain: layout style; font-display: swap; }
+        .logo i { font-display: swap; will-change: auto; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Mentora Danışmanlık</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link active">Anasayfa</a></li>
+                        <li><a href="hikayemiz.html" class="nav-link">Hikayemiz</a></li>
+                        <li><a href="basvuru.html" class="nav-link">Başvur</a></li>
+                    </ul>
+                    <div class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kampüste oturan öğrenciler">
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Yurt Dışı Hayallerine, 
+                    <span class="highlight">O Yoldan Geçmiş</span> 
+                    Mentörlerle Ulaş
+                </h1>
+                <p class="hero-subtitle">
+                    Sadece teoriyi değil, gerçeği bilenlerden danışmanlık al.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentora Nedir Section -->
+    <section class="mentora-about">
+        <div class="container">
+            <div class="mentora-about-content">
+                <div class="mentora-about-text">
+                    <h2 class="mentora-about-title">MENTORA NEDİR?</h2>
+                    <p class="mentora-about-description">
+                        Mentora, yurt dışı eğitim hayallerini gerçekleştirmek isteyen öğrenciler için o yoldan geçmiş deneyimli mentörlerle buluşmayı sağlayan yenilikçi bir danışmanlık platformudur.
+                    </p>
+                    <p class="mentora-about-description">
+                        Tüm mentörler, Mentora'nın denetim ve kalite standartlarına göre yeniden düzenlenir ve sürece dahil edilir.
+                    </p>
+                    <p class="mentora-about-description">
+                        Mentörler, kendi deneyimleri doğrultusunda öğrencilerle değerlendirilir; öğrenciler en uygun mentörlerle, Mentora'ya özel fiyatlarla, kendi bütçelerine uygun şekilde çalışırlar.
+                    </p>
+                </div>
+                <div class="mentora-about-images">
+                    <div class="mentora-image-card mentora-image-top">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Öğrenciler kütüphanede">
+                    </div>
+                    <div class="mentora-image-card mentora-image-bottom">
+                        <img src="https://unsplash.com/photos/RpxgkJRqg5I/download?ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&force=true&w=600" alt="Mezuniyet töreni">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">öğrenci</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">üniversite</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">ülke</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentor Opportunity Section -->
+    <section class="mentor-opportunity">
+        <div class="container">
+            <div class="opportunity-content">
+                <div class="opportunity-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h2 class="opportunity-title">Başarı Döngüsü</h2>
+                <p class="opportunity-text">
+                    Mentora'dan aldıkları danışmanlık ile üniversiteye yerleşen öğrencilerimiz, yerleştikten sonra mentör olarak çalışma fırsatı buluyor! Böylece sizler de hayallerinizdeki üniversiteye yerleştikten sonra, yeni öğrencilere rehberlik ederek bu başarı döngüsünün bir parçası olabilirsiniz.
+                </p>
+                <div class="opportunity-stats">
+                    <div class="opportunity-stat">
+                        <div class="opportunity-stat-number">%85</div>
+                        <div class="opportunity-stat-label">Öğrencilerimiz Mentör Olmayı Tercih Ediyor</div>
+                    </div>
+                    <div class="opportunity-stat">
+                        <div class="opportunity-stat-number">20+</div>
+                        <div class="opportunity-stat-label">Aktif Mentör Öğrencimiz</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <h2 class="section-title">Hizmet Paketlerimiz</h2>
+            <div class="packages-grid">
+                <!-- Package 1 - Most Popular -->
+                <div class="package-card popular">
+                    <div class="popular-badge">
+                        <i class="fas fa-star"></i>
+                        En Popüler
+                    </div>
+                    <h3 class="package-title">Tam Paket</h3>
+                    <div class="package-description">
+                        <ul>
+                            <li>Kişiselleştirilmiş mentör danışmanlığı</li>
+                            <li>Üniversite ve vize başvuru rehberliği</li>
+                            <li>Kapsamlı burs araştırması ve başvuru</li>
+                            <li>Mülakat hazırlık koçluğu</li>
+                            <li>Konaklama arayışı ve düzenleme</li>
+                            <li>Havaalanı karşılama hizmeti</li>
+                            <li>GSM ve banka hesabı kurulum desteği</li>
+                            <li>İlk 30 gün yerleşim takibi</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="basvuru.html" class="btn btn-primary">Başvur</a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <h3 class="package-title">Burs Paketi</h3>
+                    <div class="package-description">
+                        <ul>
+                            <li>Uzman mentör danışmanlığı</li>
+                            <li>Üniversite başvuru rehberliği</li>
+                            <li>Vize başvuru süreç desteği</li>
+                            <li>Burs fırsatları araştırması</li>
+                            <li>Mülakat hazırlık koçluğu</li>
+                            <li>Başvuru belgelerinin hazırlanması</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="basvuru.html" class="btn btn-primary">Başvur</a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <h3 class="package-title">Karşılama Paketi</h3>
+                    <div class="package-description">
+                        <ul>
+                            <li>Deneyimli mentör danışmanlığı</li>
+                            <li>Üniversite ve vize başvuru desteği</li>
+                            <li>Konaklama alternatifleri araştırması</li>
+                            <li>Havaalanı karşılama hizmeti</li>
+                            <li>GSM ve banka hesabı kurulum</li>
+                            <li>İlk hafta yerleşim rehberliği</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="basvuru.html" class="btn btn-primary">Başvur</a>
+                    </div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="package-card">
+                    <h3 class="package-title">Temel Paket</h3>
+                    <div class="package-description">
+                        <ul>
+                            <li>Kişiye özel mentör seçimi</li>
+                            <li>Üniversite başvuru rehberliği</li>
+                            <li>Vize başvuru süreç desteği</li>
+                            <li>Başvuru belgelerinin hazırlanması</li>
+                            <li>Başvuru takvimi planlama</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="basvuru.html" class="btn btn-primary">Başvur</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Sunduğumuz Hizmetler</h2>
+            <p class="section-subtitle">Mentörlerimizle birlikte size özel hazırlanmış kapsamlı hizmetlerimiz</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>ÜNİVERSİTE KAYIT</h3>
+                    <p>Hayalinizdeki üniversiteye ulaşma yolculuğunuzda ilk adımdan itibaren yanınızdayız. Başvuru sürecini deneyimli mentorlarımızla birlikte planlıyor, her aşamada size rehberlik ediyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>KONSOLOSLUK İŞLEMLERİ</h3>
+                    <p>Konsolosluk süreci karmaşık gelebilir, ama endişelenmeyin. Hangi belgelere ihtiyacınız olduğundan randevu sürecine kadar her adımda size eşlik ediyoruz ve süreci birlikte yönetiyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>EĞİTİM VİZESİ İŞLEMLERİ</h3>
+                    <p>Vize başvurusu stresli bir süreç olabilir. Sizin için gerekli tüm belgeleri listeliyor, eksik kalmamanız için kontrol ediyor ve başvuru aşamasında deneyimlerimizi paylaşıyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane-arrival"></i>
+                    </div>
+                    <h3>YURT DIŞINDA KARŞILAMA</h3>
+                    <p>Yeni bir ülkeye ilk adım attığınızda yalnız değilsiniz. Yerel mentörlerimiz ve ekip arkadaşlarımız sizi karşılıyor, ilk günlerinizde ihtiyaç duyacağınız her şeyde destek oluyor.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>OTURUM İŞLEMLERİ</h3>
+                    <p>Konaklama belgelerinden mali yeterlilik evraklarına kadar oturum izni için gerekli tüm belgeleri hazırlama sürecinde yanınızdayız. Hangi dokümana ihtiyacınız olduğunu biliyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>BURS İŞLEMLERİ</h3>
+                    <p>Burs almak hayalinizi gerçekleştirmenizi kolaylaştırır. Size uygun burs fırsatlarını araştırıyor, başvuru sürecinde rehberlik ediyor ve şansınızı artırmak için deneyimlerimizi paylaşıyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>YURT İŞLEMLERİ</h3>
+                    <p>Nerede kalacaksınız sorusu önemli. Üniversite yurtları, özel yurtlar veya öğrenci evleri arasından size en uygun seçeneği bulmanıza yardımcı oluyor ve rezervasyon sürecini birlikte yönetiyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>SİM, BANKA VE ULAŞIM KARTI</h3>
+                    <p>Pratik işler bazen en zorlayıcı olabilir. Yerel SIM kart, banka hesabı açma ve ulaşım kartı alımı gibi günlük ihtiyaçlarınızı mentörlerimizin desteğiyle kolayca hallediyorsunuz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Different Section -->
+    <section class="why-different">
+        <div class="container">
+            <h2 class="section-title">Neden Farklıyız?</h2>
+            <div class="features-grid">
+                <div class="feature-card" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <p>
+                            Herhangi bir danışmandan değil, doğrudan o yollardan geçmiş öğrencilerle sizleri buluşturuyor ve her bilgiyi tüm detaylarıyla size aktarıyoruz.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2088&q=80');">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <p>
+                            Mentörlerimiz, kendi deneyimlerinden yola çıkarak size en doğru ve güncel bilgileri sunar, böylece süreç boyunca karşılaşabileceğiniz zorlukları en aza indiririz.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <p>
+                            Her adımda yanınızda olan mentörlerimiz, kişisel deneyimlerini paylaşarak size rehberlik eder ve yurt dışı eğitim yolculuğunuzda güvenilir bir destek sağlar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mentora Nedir?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mentora, yurt dışı eğitim hayalini gerçekleştirmek isteyen öğrenciler için o yoldan geçmiş deneyimli mentörlerle buluşmayı sağlayan yenilikçi bir danışmanlık platformudur. Deneyimli mentörlerimiz, yurt dışında eğitim almış ve bu süreci bizzat yaşamış kişilerdir. Sizlere sadece teori değil, gerçek deneyimler ışığında rehberlik ederler.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mentör ve Danışman Farkı Nedir?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mentörler, yurt dışı eğitim sürecini bizzat yaşamış, sizin gitmek istediğiniz ülkede okuyan veya okumuş kişilerdir. Kendi deneyimlerinden yola çıkarak size gerçek hayattan örnekler ve pratik bilgiler sunarlar. Danışmanlar ise teori ve prosedür bilgisine sahip profesyonellerdir. Mentora'da her iki desteği de alırsınız; deneyim sahibi mentörlerle gerçek hayat bilgisi, profesyonel danışmanlarla prosedür desteği.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mentör Alımı/Seçimi Nasıl Yapılıyor?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mentörlerimiz referans ile seçilip mülakatı başarı ile geçtikten sonra mentör olarak alınmaktadır.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mentör Değişikliği Yapabilir Miyim?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Elbette! Destek hattımıza ulaşman yeterli, seni en iyi şekilde yönlendiririz.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Hoş Geldin Araması Nedir?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Satın alma sonrası seni arıyoruz! Böylece seni en baştan daha iyi tanıyıp doğru yönlendirmelere başlayabiliyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>İptal veya İade Hakkım Var Mı?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Evet! Satın alma tarihinden itibaren 14 gün içinde istediğin zaman iptal edip iade alabilirsin. Eğer bu süre içinde mentörle bir görüşme yaptıysan, görüşme ücreti kesilerek kalan tutar sana iade edilir.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Görüşme Günleri Nasıl Belirleniyor?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mentör ile sizin görüşmeniz ile beraber uygun bir tarih belirlenir.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Görüşmelerde Süre Sınırı Var Mı?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tabi ki hayır, görüşmelerde süre sınırı yok! Tüm sorularını sorup kafandaki her şey netleşene kadar mentörün seninle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Mentora</span>
+                </div>
+                <div class="footer-contact">
+                    <h4>İletişim</h4>
+                    <p><i class="fas fa-envelope"></i> info@mentora.com.tr</p>
+                    <p><i class="fas fa-phone"></i> +90 (555) 123 45 67</p>
+                    <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mentora. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
