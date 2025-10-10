@@ -24,30 +24,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    // Create backdrop element (remove existing first)
-    const existingBackdrop = document.querySelector('.mobile-menu-backdrop');
-    if (existingBackdrop) {
-        existingBackdrop.remove();
-    }
-    
-    const backdrop = document.createElement('div');
-    backdrop.className = 'mobile-menu-backdrop';
-    backdrop.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.65);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.35s ease, visibility 0.35s;
-        z-index: 1000;
-        pointer-events: none;
-    `;
-    document.body.appendChild(backdrop);
+    console.log('Mobile toggle found:', !!mobileMenuToggle);
+    console.log('Nav menu found:', !!navMenu);
     
     if (mobileMenuToggle && navMenu) {
+        console.log('Initializing mobile menu...');
+        
+        // Create backdrop element (remove existing first)
+        const existingBackdrop = document.querySelector('.mobile-menu-backdrop');
+        if (existingBackdrop) {
+            existingBackdrop.remove();
+        }
+        
+        const backdrop = document.createElement('div');
+        backdrop.className = 'mobile-menu-backdrop';
+        backdrop.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s;
+            z-index: 1000;
+            pointer-events: none;
+        `;
+        document.body.appendChild(backdrop);
+        console.log('Backdrop created');
         // Check if mobile menu already exists (prevent duplicates)
         const existingMenu = document.querySelector('.mobile-menu-wrapper');
         if (existingMenu) {
@@ -75,9 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Clone menu items
         const menuItems = navMenu.querySelectorAll('li');
+        console.log('Menu items found:', menuItems.length);
+        
         menuItems.forEach((item, index) => {
             const link = item.querySelector('a');
             if (link) {
+                console.log('Creating menu item:', index, link.textContent);
                 const mobileItem = document.createElement('div');
                 mobileItem.style.cssText = `
                     background: transparent;
@@ -163,9 +171,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         document.body.appendChild(mobileMenuWrapper);
+        console.log('Mobile menu wrapper appended to body');
+        console.log('Total menu items created:', mobileMenuWrapper.children.length);
         
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
+            console.log('Menu toggle clicked!');
             e.stopPropagation();
             const isActive = mobileMenuWrapper.style.transform === 'translateX(0px)';
             
