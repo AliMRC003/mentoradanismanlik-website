@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s;
@@ -51,12 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 0;
             width: 280px;
             height: 100vh;
-            background: white;
+            background: #ffffff;
             z-index: 9999;
             transform: translateX(100%);
             transition: transform 0.3s ease;
             overflow-y: auto;
-            padding-top: 80px;
+            padding-top: 90px;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
         `;
         
         // Clone menu items
@@ -66,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (link) {
                 const mobileItem = document.createElement('div');
                 mobileItem.style.cssText = `
-                    background: red;
-                    border-bottom: 1px solid #ddd;
-                    min-height: 60px;
+                    background: #ffffff;
+                    border-bottom: 1px solid #e5e7eb;
+                    transition: background 0.2s ease;
                 `;
                 
                 const mobileLink = document.createElement('a');
@@ -77,29 +78,57 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileLink.className = link.className;
                 mobileLink.style.cssText = `
                     display: block;
-                    padding: 20px;
-                    background: yellow;
-                    color: black;
-                    font-size: 18px;
-                    font-weight: bold;
+                    padding: 1.25rem 1.5rem;
+                    background: transparent;
+                    color: #1f2937;
+                    font-size: 1.1rem;
+                    font-weight: 500;
                     text-decoration: none;
+                    transition: all 0.2s ease;
                 `;
+                
+                // Add hover effect
+                mobileItem.addEventListener('mouseenter', () => {
+                    mobileItem.style.background = '#f3f4f6';
+                    mobileLink.style.color = '#4C1D95';
+                    mobileLink.style.paddingLeft = '2rem';
+                });
+                
+                mobileItem.addEventListener('mouseleave', () => {
+                    mobileItem.style.background = '#ffffff';
+                    mobileLink.style.color = '#1f2937';
+                    mobileLink.style.paddingLeft = '1.5rem';
+                });
+                
+                // Active state
+                if (link.classList.contains('active')) {
+                    mobileLink.style.color = '#4C1D95';
+                    mobileLink.style.fontWeight = '600';
+                    mobileItem.style.background = '#f9fafb';
+                }
+                
+                // Close menu on click
+                mobileLink.addEventListener('click', () => {
+                    mobileMenuWrapper.style.transform = 'translateX(100%)';
+                    document.body.style.overflow = '';
+                    backdrop.style.opacity = '0';
+                    backdrop.style.visibility = 'hidden';
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
                 
                 mobileItem.appendChild(mobileLink);
                 mobileMenuWrapper.appendChild(mobileItem);
-                console.log(`Created mobile item ${index}`);
             }
         });
         
         document.body.appendChild(mobileMenuWrapper);
-        console.log('Mobile menu wrapper created');
         
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             const isActive = mobileMenuWrapper.style.transform === 'translateX(0px)';
-            
-            console.log('Menu toggle clicked, currently active:', isActive);
             
             if (!isActive) {
                 mobileMenuWrapper.style.transform = 'translateX(0)';
@@ -132,24 +161,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mobile menu handling (integrated with smooth navigation)
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Close mobile menu
-            if (navMenu && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-                backdrop.style.opacity = '0';
-                backdrop.style.visibility = 'hidden';
-                const icon = mobileMenuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-        });
-    });
+    // Mobile menu handling (no longer needed with new wrapper)
+    // Old nav-menu is hidden on mobile
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

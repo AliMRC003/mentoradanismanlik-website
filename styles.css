@@ -124,7 +124,7 @@ body {
 /* Hide menu by default on mobile */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -1105,112 +1105,8 @@ body {
         position: relative;
     }
     
-    /* MOBILE MENU - Override ALL desktop styles */
-    .nav-menu,
-    ul.nav-menu {
-        display: block !important;
-        flex-direction: column !important;
-        position: fixed !important;
-        top: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 280px !important;
-        max-width: 280px !important;
-        height: 100vh !important;
-        background: #ffffff !important;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5) !important;
-        transform: translateX(100%) !important;
-        transition: transform 0.3s ease !important;
-        z-index: 9999 !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: 0 !important;
-        list-style: none !important;
-        justify-content: flex-start !important;
-        align-items: stretch !important;
-    }
-    
-    .nav-menu.active {
-        transform: translateX(0) !important;
-    }
-    
-    .nav-menu li,
-    .nav-menu.active li {
-        display: block !important;
-        flex: none !important;
-        width: 100% !important;
-        min-height: 60px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-bottom: 1px solid #e5e7eb !important;
-        list-style: none !important;
-        list-style-type: none !important;
-        background: #ffcccc !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        position: relative !important;
-        left: 0 !important;
-        right: 0 !important;
-    }
-    
-    /* Force block display for li elements */
-    .nav-menu > li,
-    ul.nav-menu > li {
-        display: block !important;
-    }
-    
-    .nav-menu li:first-child {
-        margin-top: 80px !important;
-        border-top: 1px solid #e5e7eb !important;
-    }
-    
-    .nav-menu li:last-child {
-        border-bottom: none !important;
-    }
-    
-    .nav-link {
-        display: block !important;
-        width: 100% !important;
-        min-height: 60px !important;
-        padding: 1.25rem 1.5rem !important;
-        font-size: 1.1rem !important;
-        font-weight: 700 !important;
-        color: #000000 !important;
-        text-decoration: none !important;
-        text-align: left !important;
-        transition: all 0.2s ease !important;
-        background: #ffff00 !important;
-        border: 2px solid #ff0000 !important;
-        position: relative !important;
-        line-height: 1.5 !important;
-        box-sizing: border-box !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-    }
-    
-    .nav-link:hover {
-        background: #f3f4f6 !important;
-        color: var(--primary-purple) !important;
-        padding-left: 2rem !important;
-    }
-    
-    .nav-link.active {
-        color: var(--primary-purple) !important;
-        font-weight: 600 !important;
-        background: #f9fafb !important;
-    }
-    
-    /* Remove desktop nav-link underline animation on mobile */
-    .nav-link::before {
-        display: none !important;
-    }
-    
-    .nav-link::after {
-        display: none !important;
-    }
+    /* Mobile menu is now created by JavaScript - no CSS needed */
+    /* Just hide the original desktop menu on mobile */
     
     .hero {
         height: 55vh;
