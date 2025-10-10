@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s;
-        z-index: 1400;
+        z-index: 999;
     `;
     document.body.appendChild(backdrop);
     

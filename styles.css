@@ -1110,7 +1110,7 @@ body {
         box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5) !important;
         transform: translateX(100%) !important;
         transition: transform 0.3s ease !important;
-        z-index: 1500 !important;
+        z-index: 9999 !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
         padding: 0 !important;
