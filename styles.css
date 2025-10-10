@@ -1105,9 +1105,6 @@ body {
         position: relative;
     }
     
-    /* Mobile menu is now created by JavaScript - no CSS needed */
-    /* Just hide the original desktop menu on mobile */
-    
     .hero {
         height: 55vh;
         padding-top: 3rem;

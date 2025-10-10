@@ -3,12 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Preload logo resources to prevent reload flash
     const logoIcon = document.querySelector('.logo i');
     if (logoIcon) {
-        // Force browser to cache the font icon
         logoIcon.style.fontDisplay = 'swap';
     }
     
-    // Remove problematic page animation that causes white space
-    // Preload critical images (no need to preload local SVGs - they're already fast)
+    // Preload critical images
     const criticalImages = [
         'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
         'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
@@ -24,12 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    console.log('Mobile toggle found:', !!mobileMenuToggle);
-    console.log('Nav menu found:', !!navMenu);
-    
     if (mobileMenuToggle && navMenu) {
-        console.log('Initializing mobile menu...');
-        
         // Create backdrop element (remove existing first)
         const existingBackdrop = document.querySelector('.mobile-menu-backdrop');
         if (existingBackdrop) {
@@ -52,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pointer-events: none;
         `;
         document.body.appendChild(backdrop);
-        console.log('Backdrop created');
+        
         // Check if mobile menu already exists (prevent duplicates)
         const existingMenu = document.querySelector('.mobile-menu-wrapper');
         if (existingMenu) {
@@ -63,29 +56,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuWrapper = document.createElement('div');
         mobileMenuWrapper.className = 'mobile-menu-wrapper';
         mobileMenuWrapper.style.cssText = `
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 280px;
-            height: 100vh;
-            background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
-            z-index: 9999;
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            padding-top: 100px;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-            -webkit-overflow-scrolling: touch;
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 280px !important;
+            height: 100vh !important;
+            background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%) !important;
+            z-index: 999999 !important;
+            transform: translateX(100%) !important;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            overflow-y: auto !important;
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2) !important;
+            -webkit-overflow-scrolling: touch !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         `;
         
         // Clone menu items
         const menuItems = navMenu.querySelectorAll('li');
-        console.log('Menu items found:', menuItems.length);
-        
         menuItems.forEach((item, index) => {
             const link = item.querySelector('a');
             if (link) {
-                console.log('Creating menu item:', index, link.textContent);
                 const mobileItem = document.createElement('div');
                 mobileItem.style.cssText = `
                     background: transparent;
@@ -170,22 +165,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Append menu to body
         document.body.appendChild(mobileMenuWrapper);
-        console.log('Mobile menu wrapper appended to body');
-        console.log('Total menu items created:', mobileMenuWrapper.children.length);
         
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
-            console.log('Menu toggle clicked!');
             e.stopPropagation();
-            const isActive = mobileMenuWrapper.style.transform === 'translateX(0px)';
+            const isActive = mobileMenuWrapper.style.transform === 'translateX(0px)' || mobileMenuWrapper.style.transform === 'translateX(0)';
             
             if (!isActive) {
-                mobileMenuWrapper.style.transform = 'translateX(0)';
+                mobileMenuWrapper.style.setProperty('transform', 'translateX(0)', 'important');
                 document.body.style.overflow = 'hidden';
                 backdrop.style.opacity = '1';
                 backdrop.style.visibility = 'visible';
                 backdrop.style.pointerEvents = 'auto';
+                
                 const icon = this.querySelector('i');
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -214,17 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Clean up old menu elements on page load
-    window.addEventListener('load', () => {
-        const oldMenus = document.querySelectorAll('.mobile-menu-wrapper');
-        const oldBackdrops = document.querySelectorAll('.mobile-menu-backdrop');
-        oldMenus.forEach(menu => menu.remove());
-        oldBackdrops.forEach(bd => bd.remove());
-    });
-    
-    // Mobile menu handling (no longer needed with new wrapper)
-    // Old nav-menu is hidden on mobile
-    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -247,8 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     });
-    
-    // Removed counter animations for cleaner design
     
     // Optimized card hover effects with requestAnimationFrame
     const cards = document.querySelectorAll('.package-card, .feature-card');
@@ -306,5 +287,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Mobile menu styles are now in styles.css - no need to inject
