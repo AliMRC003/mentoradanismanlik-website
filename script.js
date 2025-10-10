@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
         logoIcon.style.fontDisplay = 'swap';
     }
     
+    // Logo click redirect to homepage (mobile and desktop)
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.style.cursor = 'pointer';
+        logo.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    }
+    
     // Preload critical images
     const criticalImages = [
         'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
