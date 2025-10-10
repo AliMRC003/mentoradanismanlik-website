@@ -42,10 +42,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(backdrop);
     
     if (mobileMenuToggle && navMenu) {
+        // FORCE menu items to be visible - DEBUG
+        const menuItems = navMenu.querySelectorAll('li');
+        const menuLinks = navMenu.querySelectorAll('a');
+        
+        console.log('Menu found:', navMenu);
+        console.log('Menu items found:', menuItems.length);
+        console.log('Menu links found:', menuLinks.length);
+        
+        // Force visibility on menu items
+        menuItems.forEach(item => {
+            item.style.cssText = 'display: block !important; background: red !important; min-height: 60px !important; width: 100% !important;';
+        });
+        
+        menuLinks.forEach(link => {
+            link.style.cssText = 'display: block !important; background: yellow !important; color: black !important; padding: 20px !important; font-size: 20px !important; font-weight: bold !important;';
+        });
+        
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             const isActive = navMenu.classList.toggle('active');
+            
+            console.log('Menu toggled, active:', isActive);
             
             // Toggle icon
             const icon = this.querySelector('i');
