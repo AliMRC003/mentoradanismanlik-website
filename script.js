@@ -24,7 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    // Create backdrop element
+    // Create backdrop element (remove existing first)
+    const existingBackdrop = document.querySelector('.mobile-menu-backdrop');
+    if (existingBackdrop) {
+        existingBackdrop.remove();
+    }
+    
     const backdrop = document.createElement('div');
     backdrop.className = 'mobile-menu-backdrop';
     backdrop.style.cssText = `
@@ -33,15 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.65);
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s;
-        z-index: 999;
+        transition: opacity 0.35s ease, visibility 0.35s;
+        z-index: 1000;
+        pointer-events: none;
     `;
     document.body.appendChild(backdrop);
     
     if (mobileMenuToggle && navMenu) {
+        // Check if mobile menu already exists (prevent duplicates)
+        const existingMenu = document.querySelector('.mobile-menu-wrapper');
+        if (existingMenu) {
+            existingMenu.remove();
+        }
+        
         // Create a mobile-only menu wrapper
         const mobileMenuWrapper = document.createElement('div');
         mobileMenuWrapper.className = 'mobile-menu-wrapper';
@@ -51,13 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 0;
             width: 280px;
             height: 100vh;
-            background: #ffffff;
+            background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
             z-index: 9999;
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
-            padding-top: 90px;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+            padding-top: 100px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+            -webkit-overflow-scrolling: touch;
         `;
         
         // Clone menu items
@@ -67,9 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (link) {
                 const mobileItem = document.createElement('div');
                 mobileItem.style.cssText = `
-                    background: #ffffff;
-                    border-bottom: 1px solid #e5e7eb;
-                    transition: background 0.2s ease;
+                    background: transparent;
+                    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+                    transition: all 0.25s ease;
+                    margin: 0 0.5rem;
+                    border-radius: 8px;
+                    overflow: hidden;
                 `;
                 
                 const mobileLink = document.createElement('a');
@@ -78,44 +94,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileLink.className = link.className;
                 mobileLink.style.cssText = `
                     display: block;
-                    padding: 1.25rem 1.5rem;
+                    padding: 1rem 1.5rem;
                     background: transparent;
-                    color: #1f2937;
-                    font-size: 1.1rem;
+                    color: #374151;
+                    font-size: 1.05rem;
                     font-weight: 500;
                     text-decoration: none;
-                    transition: all 0.2s ease;
+                    transition: all 0.25s ease;
+                    position: relative;
                 `;
                 
-                // Add hover effect
-                mobileItem.addEventListener('mouseenter', () => {
-                    mobileItem.style.background = '#f3f4f6';
-                    mobileLink.style.color = '#4C1D95';
-                    mobileLink.style.paddingLeft = '2rem';
-                });
+                // Add hover/touch effects
+                const addHoverEffect = () => {
+                    if (!link.classList.contains('active')) {
+                        mobileItem.style.background = 'rgba(76, 29, 149, 0.08)';
+                        mobileLink.style.color = '#4C1D95';
+                        mobileLink.style.paddingLeft = '2rem';
+                        mobileLink.style.transform = 'translateX(5px)';
+                    }
+                };
                 
-                mobileItem.addEventListener('mouseleave', () => {
-                    mobileItem.style.background = '#ffffff';
-                    mobileLink.style.color = '#1f2937';
-                    mobileLink.style.paddingLeft = '1.5rem';
-                });
+                const removeHoverEffect = () => {
+                    if (!link.classList.contains('active')) {
+                        mobileItem.style.background = 'transparent';
+                        mobileLink.style.color = '#374151';
+                        mobileLink.style.paddingLeft = '1.5rem';
+                        mobileLink.style.transform = 'translateX(0)';
+                    }
+                };
+                
+                mobileItem.addEventListener('mouseenter', addHoverEffect);
+                mobileItem.addEventListener('mouseleave', removeHoverEffect);
+                mobileItem.addEventListener('touchstart', addHoverEffect);
                 
                 // Active state
                 if (link.classList.contains('active')) {
                     mobileLink.style.color = '#4C1D95';
                     mobileLink.style.fontWeight = '600';
-                    mobileItem.style.background = '#f9fafb';
+                    mobileItem.style.background = 'rgba(76, 29, 149, 0.12)';
+                    mobileItem.style.borderLeft = '3px solid #4C1D95';
                 }
                 
                 // Close menu on click
-                mobileLink.addEventListener('click', () => {
+                mobileLink.addEventListener('click', (e) => {
                     mobileMenuWrapper.style.transform = 'translateX(100%)';
                     document.body.style.overflow = '';
                     backdrop.style.opacity = '0';
                     backdrop.style.visibility = 'hidden';
+                    backdrop.style.pointerEvents = 'none';
                     const icon = mobileMenuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                    
+                    // Clean up on navigation
+                    setTimeout(() => {
+                        if (mobileMenuWrapper && mobileMenuWrapper.parentNode) {
+                            mobileMenuWrapper.remove();
+                        }
+                        if (backdrop && backdrop.parentNode) {
+                            backdrop.remove();
+                        }
+                    }, 350);
                 });
                 
                 mobileItem.appendChild(mobileLink);
@@ -135,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = 'hidden';
                 backdrop.style.opacity = '1';
                 backdrop.style.visibility = 'visible';
+                backdrop.style.pointerEvents = 'auto';
                 const icon = this.querySelector('i');
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -143,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = '';
                 backdrop.style.opacity = '0';
                 backdrop.style.visibility = 'hidden';
+                backdrop.style.pointerEvents = 'none';
                 const icon = this.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
@@ -155,11 +196,20 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
             backdrop.style.opacity = '0';
             backdrop.style.visibility = 'hidden';
+            backdrop.style.pointerEvents = 'none';
             const icon = mobileMenuToggle.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
         });
     }
+    
+    // Clean up old menu elements on page load
+    window.addEventListener('load', () => {
+        const oldMenus = document.querySelectorAll('.mobile-menu-wrapper');
+        const oldBackdrops = document.querySelectorAll('.mobile-menu-backdrop');
+        oldMenus.forEach(menu => menu.remove());
+        oldBackdrops.forEach(bd => bd.remove());
+    });
     
     // Mobile menu handling (no longer needed with new wrapper)
     // Old nav-menu is hidden on mobile
