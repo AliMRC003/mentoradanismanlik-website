@@ -24,36 +24,57 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
+    // Create backdrop element
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mobile-menu-backdrop';
+    backdrop.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s;
+        z-index: 1400;
+    `;
+    document.body.appendChild(backdrop);
+    
     if (mobileMenuToggle && navMenu) {
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.toggle('active');
             
             // Toggle icon
             const icon = this.querySelector('i');
-            if (navMenu.classList.contains('active')) {
+            if (isActive) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden'; // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+                // Show backdrop
+                backdrop.style.opacity = '1';
+                backdrop.style.visibility = 'visible';
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
-                document.body.style.overflow = ''; // Restore body scroll
+                document.body.style.overflow = '';
+                // Hide backdrop
+                backdrop.style.opacity = '0';
+                backdrop.style.visibility = 'hidden';
             }
         });
         
-        // Close menu when clicking outside (on backdrop)
-        document.addEventListener('click', function(e) {
-            if (navMenu.classList.contains('active') && 
-                !navMenu.contains(e.target) && 
-                !mobileMenuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
+        // Close menu when clicking on backdrop
+        backdrop.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+            backdrop.style.opacity = '0';
+            backdrop.style.visibility = 'hidden';
         });
     }
     
@@ -64,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Close mobile menu
             if (navMenu && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                backdrop.style.opacity = '0';
+                backdrop.style.visibility = 'hidden';
                 const icon = mobileMenuToggle.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-times');
