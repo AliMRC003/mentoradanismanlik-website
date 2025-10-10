@@ -138,39 +138,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add CSS for mobile menu
-const mobileMenuStyles = `
-    @media (max-width: 768px) {
-        .nav-menu {
-            position: fixed;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            flex-direction: column;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transform: translateY(-100vh);
-            transition: transform 0.3s ease;
-            z-index: 999;
-        }
-        
-        .nav-menu.active {
-            transform: translateY(0);
-        }
-        
-        .nav-menu li {
-            margin: 1rem 0;
-        }
-        
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-    }
-`;
-
-// Inject mobile menu styles
-const style = document.createElement('style');
-style.textContent = mobileMenuStyles;
-document.head.appendChild(style);
+// Mobile menu styles are now in styles.css - no need to inject
