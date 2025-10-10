@@ -60,14 +60,34 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('First item position:', computedStyle.position);
         }
         
-        // Force visibility on menu items
+        // Force visibility on menu items - MORE AGGRESSIVE
         menuItems.forEach((item, index) => {
-            item.style.cssText = 'display: block !important; background: red !important; min-height: 60px !important; width: 100% !important; position: relative !important; z-index: 10000 !important;';
+            // Remove all classes that might interfere
+            item.style.display = 'block';
+            item.style.background = 'red';
+            item.style.minHeight = '60px';
+            item.style.width = '100%';
+            item.style.position = 'relative';
+            item.style.zIndex = '10000';
+            item.style.visibility = 'visible';
+            item.style.opacity = '1';
+            item.style.listStyleType = 'none';
+            item.setAttribute('style', item.getAttribute('style') + '; display: block !important;');
             console.log(`Item ${index} styled`);
         });
         
         menuLinks.forEach((link, index) => {
-            link.style.cssText = 'display: block !important; background: yellow !important; color: black !important; padding: 20px !important; font-size: 20px !important; font-weight: bold !important; position: relative !important; z-index: 10001 !important;';
+            link.style.display = 'block';
+            link.style.background = 'yellow';
+            link.style.color = 'black';
+            link.style.padding = '20px';
+            link.style.fontSize = '20px';
+            link.style.fontWeight = 'bold';
+            link.style.position = 'relative';
+            link.style.zIndex = '10001';
+            link.style.visibility = 'visible';
+            link.style.opacity = '1';
+            link.setAttribute('style', link.getAttribute('style') + '; display: block !important;');
             console.log(`Link ${index} styled`);
         });
         

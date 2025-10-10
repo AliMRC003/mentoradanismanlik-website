@@ -1136,7 +1136,8 @@ body {
         transform: translateX(0) !important;
     }
     
-    .nav-menu li {
+    .nav-menu li,
+    .nav-menu.active li {
         display: block !important;
         flex: none !important;
         width: 100% !important;
@@ -1145,6 +1146,7 @@ body {
         padding: 0 !important;
         border-bottom: 1px solid #e5e7eb !important;
         list-style: none !important;
+        list-style-type: none !important;
         background: #ffcccc !important;
         opacity: 1 !important;
         visibility: visible !important;
@@ -1153,7 +1155,9 @@ body {
         right: 0 !important;
     }
     
-    .nav-menu.active li {
+    /* Force block display for li elements */
+    .nav-menu > li,
+    ul.nav-menu > li {
         display: block !important;
     }
     
