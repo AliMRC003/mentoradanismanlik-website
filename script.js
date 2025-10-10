@@ -42,93 +42,93 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(backdrop);
     
     if (mobileMenuToggle && navMenu) {
-        // FORCE menu items to be visible - DEBUG
+        // Create a mobile-only menu wrapper
+        const mobileMenuWrapper = document.createElement('div');
+        mobileMenuWrapper.className = 'mobile-menu-wrapper';
+        mobileMenuWrapper.style.cssText = `
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 9999;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+            padding-top: 80px;
+        `;
+        
+        // Clone menu items
         const menuItems = navMenu.querySelectorAll('li');
-        const menuLinks = navMenu.querySelectorAll('a');
-        
-        console.log('Menu found:', navMenu);
-        console.log('Menu items found:', menuItems.length);
-        console.log('Menu links found:', menuLinks.length);
-        
-        // Check computed styles
-        if (menuItems.length > 0) {
-            const firstItem = menuItems[0];
-            const computedStyle = window.getComputedStyle(firstItem);
-            console.log('First item display:', computedStyle.display);
-            console.log('First item visibility:', computedStyle.visibility);
-            console.log('First item opacity:', computedStyle.opacity);
-            console.log('First item position:', computedStyle.position);
-        }
-        
-        // Force visibility on menu items - MORE AGGRESSIVE
         menuItems.forEach((item, index) => {
-            // Remove all classes that might interfere
-            item.style.display = 'block';
-            item.style.background = 'red';
-            item.style.minHeight = '60px';
-            item.style.width = '100%';
-            item.style.position = 'relative';
-            item.style.zIndex = '10000';
-            item.style.visibility = 'visible';
-            item.style.opacity = '1';
-            item.style.listStyleType = 'none';
-            item.setAttribute('style', item.getAttribute('style') + '; display: block !important;');
-            console.log(`Item ${index} styled`);
+            const link = item.querySelector('a');
+            if (link) {
+                const mobileItem = document.createElement('div');
+                mobileItem.style.cssText = `
+                    background: red;
+                    border-bottom: 1px solid #ddd;
+                    min-height: 60px;
+                `;
+                
+                const mobileLink = document.createElement('a');
+                mobileLink.href = link.href;
+                mobileLink.textContent = link.textContent;
+                mobileLink.className = link.className;
+                mobileLink.style.cssText = `
+                    display: block;
+                    padding: 20px;
+                    background: yellow;
+                    color: black;
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-decoration: none;
+                `;
+                
+                mobileItem.appendChild(mobileLink);
+                mobileMenuWrapper.appendChild(mobileItem);
+                console.log(`Created mobile item ${index}`);
+            }
         });
         
-        menuLinks.forEach((link, index) => {
-            link.style.display = 'block';
-            link.style.background = 'yellow';
-            link.style.color = 'black';
-            link.style.padding = '20px';
-            link.style.fontSize = '20px';
-            link.style.fontWeight = 'bold';
-            link.style.position = 'relative';
-            link.style.zIndex = '10001';
-            link.style.visibility = 'visible';
-            link.style.opacity = '1';
-            link.setAttribute('style', link.getAttribute('style') + '; display: block !important;');
-            console.log(`Link ${index} styled`);
-        });
+        document.body.appendChild(mobileMenuWrapper);
+        console.log('Mobile menu wrapper created');
         
         // Toggle menu
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            const isActive = navMenu.classList.toggle('active');
+            const isActive = mobileMenuWrapper.style.transform === 'translateX(0px)';
             
-            console.log('Menu toggled, active:', isActive);
-            console.log('Menu element:', navMenu);
-            console.log('Menu computed display:', window.getComputedStyle(navMenu).display);
-            console.log('Menu computed transform:', window.getComputedStyle(navMenu).transform);
+            console.log('Menu toggle clicked, currently active:', isActive);
             
-            // Toggle icon
-            const icon = this.querySelector('i');
-            if (isActive) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+            if (!isActive) {
+                mobileMenuWrapper.style.transform = 'translateX(0)';
                 document.body.style.overflow = 'hidden';
-                // Show backdrop
                 backdrop.style.opacity = '1';
                 backdrop.style.visibility = 'visible';
+                const icon = this.querySelector('i');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                mobileMenuWrapper.style.transform = 'translateX(100%)';
                 document.body.style.overflow = '';
-                // Hide backdrop
                 backdrop.style.opacity = '0';
                 backdrop.style.visibility = 'hidden';
+                const icon = this.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
         
         // Close menu when clicking on backdrop
         backdrop.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            mobileMenuWrapper.style.transform = 'translateX(100%)';
             document.body.style.overflow = '';
             backdrop.style.opacity = '0';
             backdrop.style.visibility = 'hidden';
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         });
     }
     
