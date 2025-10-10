@@ -1095,28 +1095,29 @@ body {
         position: relative;
     }
     
-    /* Full page sidebar menu */
+    /* Hide desktop menu */
     .nav-menu {
-        display: flex !important;
+        display: none;
+    }
+    
+    /* Full page sidebar menu - STARTS FROM TOP */
+    .nav-menu {
+        display: block !important;
         position: fixed;
-        top: 80px;
+        top: 0 !important;
         right: 0;
-        bottom: 0;
-        width: 75%;
-        max-width: 300px;
-        height: calc(100vh - 80px);
+        width: 280px;
+        height: 100vh !important;
         background: var(--white);
-        flex-direction: column;
-        padding: 2rem 1.5rem 2rem 1.5rem;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
         transform: translateX(100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.3s ease;
         z-index: 1500;
-        gap: 0;
         overflow-y: auto;
-        list-style: none;
-        justify-content: flex-start;
         -webkit-overflow-scrolling: touch;
+        padding: 0;
+        margin: 0;
+        list-style: none;
     }
     
     .nav-menu.active {
@@ -1125,11 +1126,15 @@ body {
     
     .nav-menu li {
         display: block !important;
-        margin: 0;
-        padding: 0;
-        border-bottom: 1px solid #eeeeee;
         width: 100%;
-        flex-shrink: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-bottom: 1px solid #e5e7eb;
+        list-style: none;
+    }
+    
+    .nav-menu li:first-child {
+        margin-top: 80px !important;
     }
     
     .nav-menu li:last-child {
@@ -1137,29 +1142,38 @@ body {
     }
     
     .nav-link {
-        font-size: 1.15rem !important;
-        font-weight: 500 !important;
         display: block !important;
-        width: 100%;
-        padding: 1.5rem 1rem !important;
-        color: var(--dark-gray) !important;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        text-align: left;
+        width: 100% !important;
+        padding: 1.25rem 1.5rem !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        color: #1f2937 !important;
+        text-decoration: none !important;
+        text-align: left !important;
+        transition: all 0.2s ease !important;
+        background: transparent !important;
+        border: none !important;
+        position: relative !important;
     }
     
     .nav-link:hover {
+        background: #f3f4f6 !important;
         color: var(--primary-purple) !important;
-        padding-left: 1rem !important;
+        padding-left: 2rem !important;
     }
     
     .nav-link.active {
         color: var(--primary-purple) !important;
         font-weight: 600 !important;
+        background: #f9fafb !important;
     }
     
     /* Remove desktop nav-link underline animation on mobile */
     .nav-link::before {
+        display: none !important;
+    }
+    
+    .nav-link::after {
         display: none !important;
     }
     
