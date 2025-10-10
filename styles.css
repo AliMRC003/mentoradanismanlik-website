@@ -1094,17 +1094,20 @@ body {
     }
     
     .nav-menu {
-        display: flex;
+        display: flex !important;
         position: fixed;
         top: 70px;
         left: 0;
         right: 0;
+        width: 100%;
         background: var(--white);
         flex-direction: column;
         padding: 1.5rem;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
         z-index: 9999;
         gap: 0;
         border-top: 1px solid #eee;
@@ -1113,7 +1116,9 @@ body {
     }
     
     .nav-menu.active {
-        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
     
     .nav-menu li {
