@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Sayfa Bulunamadı - 404 | Mentora</title>
+    <meta name="description" content="Aradığınız sayfa bulunamadı. Mentora ana sayfasına dönün ve yurt dışı eğitim danışmanlığı hizmetlerimizi keşfedin.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Mentora" />
+    <link rel="manifest" href="site.webmanifest" />
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4C1D95 0%, #5B21B6 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(253, 224, 71, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .error-page::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #FDE047, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .error-icon {
+            width: 120px;
+            height: 120px;
+            background: rgba(253, 224, 71, 0.2);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(253, 224, 71, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3.5rem;
+            color: #FDE047;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: #FDE047;
+            color: #4C1D95;
+            box-shadow: 0 8px 25px rgba(253, 224, 71, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #facc15;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(253, 224, 71, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 1.8rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .error-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3rem;
+            }
+
+            .btn {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="error-code">404</div>
+            <h1 class="error-title">Sayfa Bulunamadı</h1>
+            <p class="error-message">
+                Üzgünüz, aradığınız sayfa mevcut değil veya taşınmış olabilir. 
+                Ana sayfaya dönerek yurt dışı eğitim danışmanlığı hizmetlerimize göz atabilirsiniz.
+            </p>
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Ana Sayfaya Dön
+                </a>
+                <a href="basvuru.html" class="btn btn-secondary">
+                    <i class="fas fa-file-alt"></i> Başvuru Yap
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto redirect after 10 seconds (optional)
+        // setTimeout(() => {
+        //     window.location.href = 'index.html';
+        // }, 10000);
+    </script>
+</body>
+</html>
+

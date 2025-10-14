@@ -40,19 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const backdrop = document.createElement('div');
         backdrop.className = 'mobile-menu-backdrop';
-        // Calculate backdrop width - it should cover everything EXCEPT the sidebar
-        const sidebarWidth = window.innerWidth * 0.75 > 400 ? 400 : window.innerWidth * 0.75;
-        const backdropWidth = (window.innerWidth - sidebarWidth) + 'px';
         backdrop.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
-            width: ${backdropWidth};
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(2px);
-            opacity: 0;
-            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 999;
             pointer-events: none;
         `;
@@ -158,7 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     mobileMenuWrapper.style.transform = 'translateX(100%)';
                     mobileMenuWrapper.classList.remove('active');
                     document.body.style.overflow = '';
-                    backdrop.style.opacity = '0';
+                    backdrop.style.background = 'rgba(0, 0, 0, 0)';
+                    backdrop.style.backdropFilter = 'blur(0px)';
                     backdrop.style.pointerEvents = 'none';
                     backdrop.classList.remove('active');
                     
@@ -194,7 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileMenuWrapper.style.setProperty('transform', 'translateX(0)', 'important');
                 mobileMenuWrapper.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                backdrop.style.opacity = '1';
+                backdrop.style.background = 'rgba(0, 0, 0, 0.7)';
+                backdrop.style.backdropFilter = 'blur(2px)';
                 backdrop.style.pointerEvents = 'auto';
                 backdrop.classList.add('active');
                 
@@ -205,7 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileMenuWrapper.style.transform = 'translateX(100%)';
                 mobileMenuWrapper.classList.remove('active');
                 document.body.style.overflow = '';
-                backdrop.style.opacity = '0';
+                backdrop.style.background = 'rgba(0, 0, 0, 0)';
+                backdrop.style.backdropFilter = 'blur(0px)';
                 backdrop.style.pointerEvents = 'none';
                 backdrop.classList.remove('active');
                 
@@ -220,7 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenuWrapper.style.transform = 'translateX(100%)';
             mobileMenuWrapper.classList.remove('active');
             document.body.style.overflow = '';
-            backdrop.style.opacity = '0';
+            backdrop.style.background = 'rgba(0, 0, 0, 0)';
+            backdrop.style.backdropFilter = 'blur(0px)';
             backdrop.style.pointerEvents = 'none';
             backdrop.classList.remove('active');
             
@@ -357,15 +357,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroBackground = document.querySelector('.hero-background');
         if (heroBackground) {
             heroBackground.style.backgroundColor = '#4C1D95'; // Purple background while loading
+            heroBackground.style.transition = 'background-color 0.3s ease';
         }
         
-        heroImg.addEventListener('load', () => {
+        // If image is already cached/loaded, show it immediately
+        if (heroImg.complete && heroImg.naturalHeight !== 0) {
+            heroImg.style.opacity = '1';
             heroImg.classList.add('loaded');
-            // Remove fallback background after image loads
             if (heroBackground) {
                 heroBackground.style.backgroundColor = 'transparent';
             }
-        });
+        } else {
+            heroImg.addEventListener('load', () => {
+                heroImg.style.opacity = '1';
+                heroImg.classList.add('loaded');
+                // Remove fallback background after image loads
+                if (heroBackground) {
+                    heroBackground.style.backgroundColor = 'transparent';
+                }
+            });
+        }
     }
 
     // Loading States for Buttons

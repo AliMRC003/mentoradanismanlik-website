@@ -1,0 +1,23 @@
+# robots.txt for Mentora Danışmanlık
+# https://www.mentoradanismanlik.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.mentoradanismanlik.com/sitemap.xml
+
+# Disallow specific file types if any (optional)
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /*.xml$ 
+
+# Allow important pages
+Allow: /index.html
+Allow: /basvuru.html
+Allow: /hikayemiz.html
+
+# Crawl-delay for bots (optional, helps with server load)
+# User-agent: *
+# Crawl-delay: 1
+
