@@ -40,17 +40,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const backdrop = document.createElement('div');
         backdrop.className = 'mobile-menu-backdrop';
+        // Calculate backdrop width - it should cover everything EXCEPT the sidebar
+        const sidebarWidth = window.innerWidth * 0.75 > 400 ? 400 : window.innerWidth * 0.75;
+        const backdropWidth = (window.innerWidth - sidebarWidth) + 'px';
         backdrop.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.65);
+            width: ${backdropWidth};
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(2px);
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.35s ease, visibility 0.35s;
-            z-index: 1000;
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
             pointer-events: none;
         `;
         document.body.appendChild(backdrop);
@@ -69,15 +72,18 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 0 !important;
             right: 0 !important;
             bottom: 0 !important;
-            width: 280px !important;
+            width: 75vw !important;
+            max-width: 400px !important;
             height: 100vh !important;
             background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%) !important;
-            z-index: 999999 !important;
+            z-index: 999 !important;
             transform: translateX(100%) !important;
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
             overflow-y: auto !important;
-            padding-top: 20px !important;
+            padding-top: 80px !important;
             padding-bottom: 20px !important;
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2) !important;
             -webkit-overflow-scrolling: touch !important;
             display: block !important;
@@ -150,10 +156,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Close menu on click
                 mobileLink.addEventListener('click', (e) => {
                     mobileMenuWrapper.style.transform = 'translateX(100%)';
+                    mobileMenuWrapper.classList.remove('active');
                     document.body.style.overflow = '';
                     backdrop.style.opacity = '0';
-                    backdrop.style.visibility = 'hidden';
                     backdrop.style.pointerEvents = 'none';
+                    backdrop.classList.remove('active');
+                    
                     const icon = mobileMenuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
@@ -184,20 +192,23 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isActive) {
                 mobileMenuWrapper.style.setProperty('transform', 'translateX(0)', 'important');
+                mobileMenuWrapper.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 backdrop.style.opacity = '1';
-                backdrop.style.visibility = 'visible';
                 backdrop.style.pointerEvents = 'auto';
+                backdrop.classList.add('active');
                 
                 const icon = this.querySelector('i');
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
                 mobileMenuWrapper.style.transform = 'translateX(100%)';
+                mobileMenuWrapper.classList.remove('active');
                 document.body.style.overflow = '';
                 backdrop.style.opacity = '0';
-                backdrop.style.visibility = 'hidden';
                 backdrop.style.pointerEvents = 'none';
+                backdrop.classList.remove('active');
+                
                 const icon = this.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
@@ -207,10 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when clicking on backdrop
         backdrop.addEventListener('click', function() {
             mobileMenuWrapper.style.transform = 'translateX(100%)';
+            mobileMenuWrapper.classList.remove('active');
             document.body.style.overflow = '';
             backdrop.style.opacity = '0';
-            backdrop.style.visibility = 'hidden';
             backdrop.style.pointerEvents = 'none';
+            backdrop.classList.remove('active');
+            
             const icon = mobileMenuToggle.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
@@ -327,13 +340,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         img.addEventListener('load', () => {
             img.style.opacity = '1';
+            img.classList.add('loaded');
         });
         
         img.addEventListener('error', () => {
             img.style.opacity = '1';
             img.alt = 'Görsel yüklenemedi';
+            img.classList.add('loaded');
         });
     });
+
+    // Special handling for hero image
+    const heroImg = document.querySelector('.hero-background img');
+    if (heroImg) {
+        // Set a fallback background color while loading
+        const heroBackground = document.querySelector('.hero-background');
+        if (heroBackground) {
+            heroBackground.style.backgroundColor = '#4C1D95'; // Purple background while loading
+        }
+        
+        heroImg.addEventListener('load', () => {
+            heroImg.classList.add('loaded');
+            // Remove fallback background after image loads
+            if (heroBackground) {
+                heroBackground.style.backgroundColor = 'transparent';
+            }
+        });
+    }
 
     // Loading States for Buttons
     const buttons = document.querySelectorAll('.btn');
