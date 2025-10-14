@@ -63,6 +63,20 @@
             margin-top: 0;
             overflow: hidden;
         }
+        
+        @media (max-width: 768px) {
+            .story-hero {
+                height: 50vh;
+                padding-top: 4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .story-hero {
+                height: 45vh;
+                padding-top: 3rem;
+            }
+        }
 
         .story-hero::before {
             content: '';
@@ -182,12 +196,6 @@
         }
 
         @media (max-width: 768px) {
-            .story-hero {
-                height: 55vh;
-                padding-top: 4rem;
-                margin-top: 50px;
-            }
-            
             .story-title {
                 font-size: 2.2rem;
             }
@@ -197,7 +205,6 @@
                 font-size: 1rem;
                 line-height: 1.6;
             }
-            
             
             .student-image-placeholder {
                 height: 300px;
@@ -234,18 +241,18 @@
     </header>
 
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" style="background: #f9fafb; padding: 1rem 0; margin-top: 80px;">
+    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
         <div class="container">
-            <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; margin: 0; padding: 0; font-size: 0.9rem;">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="display: flex; align-items: center;">
-                    <a itemprop="item" href="index.html" style="color: #4C1D95; text-decoration: none;">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb-list">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item">
+                    <a itemprop="item" href="index.html" class="breadcrumb-link">
                         <span itemprop="name">Anasayfa</span>
                     </a>
                     <meta itemprop="position" content="1" />
-                    <span style="margin: 0 0.5rem; color: #6B7280;">›</span>
+                    <span class="breadcrumb-separator">›</span>
                 </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="display: flex; align-items: center;">
-                    <span itemprop="name" style="color: #6B7280;">Hikayemiz</span>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item">
+                    <span itemprop="name" class="breadcrumb-current">Hikayemiz</span>
                     <meta itemprop="position" content="2" />
                 </li>
             </ol>
