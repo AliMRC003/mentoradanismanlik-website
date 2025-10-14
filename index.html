@@ -5,10 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
     <title>Mentora - Yurt Dışı Eğitim Danışmanlığı</title>
+    <meta name="description" content="Yurt dışı eğitim hayallerinizi gerçekleştirin. Deneyimli mentörlerle üniversite, burs ve vize danışmanlığı. 30+ başarılı öğrenci, 20+ üniversite, 8 ülke.">
+    <meta name="keywords" content="yurt dışı eğitim, üniversite, burs, vize, danışmanlık, mentör, yurt dışı okul, eğitim danışmanı, üniversite başvuru, vize işlemleri">
+    <meta name="author" content="Mentora Danışmanlık">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mentoradanismanlik.com/">
+    <meta property="og:title" content="Mentora - Yurt Dışı Eğitim Danışmanlığı">
+    <meta property="og:description" content="Yurt dışı eğitim hayallerinizi gerçekleştirin. Deneyimli mentörlerle üniversite, burs ve vize danışmanlığı.">
+    <meta property="og:image" content="https://mentoradanismanlik.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mentoradanismanlik.com/">
+    <meta property="twitter:title" content="Mentora - Yurt Dışı Eğitim Danışmanlığı">
+    <meta property="twitter:description" content="Yurt dışı eğitim hayallerinizi gerçekleştirin. Deneyimli mentörlerle üniversite, burs ve vize danışmanlığı.">
+    <meta property="twitter:image" content="https://mentoradanismanlik.com/og-image.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Mentora Danışmanlık",
+        "description": "Yurt dışı eğitim danışmanlığı hizmeti veren profesyonel danışmanlık firması",
+        "url": "https://mentoradanismanlik.com",
+        "logo": "https://mentoradanismanlik.com/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+905536804604",
+            "contactType": "customer service",
+            "email": "info@mentoradanismanlik.com"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "İstanbul",
+            "addressCountry": "TR"
+        },
+        "service": [
+            {
+                "@type": "Service",
+                "name": "Yurt Dışı Eğitim Danışmanlığı",
+                "description": "Üniversite seçimi, burs başvuruları, vize işlemleri danışmanlığı"
+            },
+            {
+                "@type": "Service", 
+                "name": "Mentör Danışmanlığı",
+                "description": "Deneyimli mentörlerle kişiselleştirilmiş eğitim danışmanlığı"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Eğitim Danışmanlığı Paketleri",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Tam Paket"
+                    }
+                },
+                {
+                    "@type": "Offer", 
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Burs Paketi"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+    
     <script src="script.js" defer></script>
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -33,23 +117,29 @@
                         <i class="fas fa-graduation-cap"></i>
                         <span>Mentora Danışmanlık</span>
                     </div>
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link active">Anasayfa</a></li>
+                    <ul class="nav-menu" role="navigation" aria-label="Ana navigasyon">
+                        <li><a href="index.html" class="nav-link active" aria-current="page">Anasayfa</a></li>
                         <li><a href="hikayemiz.html" class="nav-link">Hikayemiz</a></li>
                         <li><a href="basvuru.html" class="nav-link">Başvur</a></li>
                     </ul>
-                    <div class="mobile-menu-toggle">
+                    <button class="mobile-menu-toggle" aria-label="Mobil menüyü aç" aria-expanded="false">
                         <i class="fas fa-bars"></i>
-                    </div>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" role="banner" aria-label="Ana başlık bölümü">
         <div class="hero-background">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kampüste oturan öğrenciler">
+            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                 srcset="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 400w,
+                         https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 800w,
+                         https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1200w"
+                 sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                 loading="lazy"
+                 alt="Üniversite kampüsünde öğrenciler ders çalışıyor - yurt dışı eğitim danışmanlığı">
         </div>
         <div class="hero-content">
             <div class="container">
@@ -83,10 +173,14 @@
                 </div>
                 <div class="mentora-about-images">
                     <div class="mentora-image-card mentora-image-top">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Öğrenciler kütüphanede">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             loading="lazy"
+                             alt="Öğrenciler kütüphanede ders çalışıyor - yurt dışı eğitim başarısı">
                     </div>
                     <div class="mentora-image-card mentora-image-bottom">
-                        <img src="https://unsplash.com/photos/RpxgkJRqg5I/download?ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&force=true&w=600" alt="Mezuniyet töreni">
+                        <img src="https://unsplash.com/photos/RpxgkJRqg5I/download?ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&force=true&w=400" 
+                             loading="lazy"
+                             alt="Başarılı öğrenciler mezuniyet töreninde - yurt dışı eğitim başarısı">
                     </div>
                 </div>
             </div>
@@ -428,8 +522,18 @@
         </div>
     </section>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Yukarı Çık">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" aria-label="Sayfa alt bilgileri">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -438,8 +542,8 @@
                 </div>
                 <div class="footer-contact">
                     <h4>İletişim</h4>
-                    <p><i class="fas fa-envelope"></i> info@mentoradanismanlik.com</p>
-                    <p><i class="fas fa-phone"></i> +90 (553) 680 46 04</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@mentoradanismanlik.com">info@mentoradanismanlik.com</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+905536804604">+90 (553) 680 46 04</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
                 </div>
                 <div class="footer-social">

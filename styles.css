@@ -11,25 +11,35 @@ body {
     color: #333;
     background-color: #ffffff;
     overflow-x: hidden;
+    padding-top: 0;
+    margin: 0;
 }
 
-/* Hide scrollbar on desktop only - keep functionality */
-@media (min-width: 769px) {
-    /* For Webkit browsers (Chrome, Safari, Edge) */
-    ::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
-    }
-    
-    /* For Firefox */
-    * {
-        scrollbar-width: none;
-    }
-    
-    /* For IE and Edge legacy */
-    body {
-        -ms-overflow-style: none;
-    }
+/* Modern Scrollbar - Tüm cihazlar için */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(76, 29, 149, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 29, 149, 0.5);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(76, 29, 149, 0.2) transparent;
 }
 
 /* Dark mode support */
@@ -115,6 +125,8 @@ body {
     backface-visibility: hidden;
     transform: translate3d(0,0,0);
     contain: layout style paint;
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
 /* Prevent logo flash during navigation */
@@ -133,6 +145,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    height: 80px;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -207,7 +221,7 @@ body {
     align-items: center;
     justify-content: center;
     padding-top: 6rem;
-    margin-top: 80px;
+    margin-top: 60px;
     overflow: hidden;
 }
 
@@ -1116,6 +1130,16 @@ body {
     gap: 0.5rem;
 }
 
+.footer-contact a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-purple);
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
@@ -1146,10 +1170,55 @@ body {
     color: #9CA3AF;
 }
 
+/* Mobile UX Improvements */
+@media (max-width: 768px) {
+    /* Larger touch targets */
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    
+    /* Better button spacing */
+    .btn + .btn {
+        margin-left: 12px;
+    }
+    
+    /* Improved navigation */
+    .nav-menu a {
+        padding: 16px 20px;
+        font-size: 18px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Better form inputs */
+    input, textarea, select {
+        min-height: 48px;
+        font-size: 16px;
+        padding: 12px 16px;
+    }
+    
+    /* Improved scroll behavior */
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better tap highlights */
+    * {
+        -webkit-tap-highlight-color: rgba(76, 29, 149, 0.2);
+    }
+}
+
 /* Mobile Menu Overlay */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
+        min-width: 48px;
+        min-height: 48px;
         z-index: 2000;
         position: relative;
     }
@@ -1398,3 +1467,89 @@ body {
 /* Removed loading spinner */
 
 /* Stats animations completely removed to prevent conflicts */
+
+/* Loading States */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading .btn-text {
+    opacity: 0;
+}
+
+.btn-loading .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--light-purple) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(76, 29, 149, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(76, 29, 149, 0.4);
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}

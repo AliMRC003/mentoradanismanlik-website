@@ -295,4 +295,61 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+        // Show/hide button on scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Scroll to top on click
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Loading States for Images
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        // Add skeleton class initially
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        
+        img.addEventListener('load', () => {
+            img.style.opacity = '1';
+        });
+        
+        img.addEventListener('error', () => {
+            img.style.opacity = '1';
+            img.alt = 'Görsel yüklenemedi';
+        });
+    });
+
+    // Loading States for Buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Only add loading for form submissions or external links
+            if (this.type === 'submit' || this.href) {
+                this.classList.add('btn-loading');
+                this.innerHTML = '<span class="loading-spinner"></span>';
+                
+                // Reset after 3 seconds (fallback)
+                setTimeout(() => {
+                    this.classList.remove('btn-loading');
+                    this.innerHTML = this.dataset.originalText || 'Başvur';
+                }, 3000);
+            }
+        });
+    });
 });
