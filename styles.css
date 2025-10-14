@@ -13,6 +13,54 @@ body {
     overflow-x: hidden;
 }
 
+/* Hide scrollbar on desktop only - keep functionality */
+@media (min-width: 769px) {
+    /* For Webkit browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+    
+    /* For Firefox */
+    * {
+        scrollbar-width: none;
+    }
+    
+    /* For IE and Edge legacy */
+    body {
+        -ms-overflow-style: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        color-scheme: light;
+        background-color: #ffffff;
+    }
+    
+    /* Force light mode for all elements */
+    * {
+        color-scheme: light;
+    }
+    
+    /* Prevent dark mode artifacts on images */
+    img {
+        background-color: transparent;
+        border: none !important;
+        outline: none !important;
+    }
+    
+    /* Prevent dark mode scroll indicators on mobile */
+    ::-webkit-scrollbar-track {
+        background-color: transparent !important;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
 /* Header performance optimization */
 .header {
     contain: layout style paint;
