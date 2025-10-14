@@ -147,6 +147,7 @@ body {
     transform: translateZ(0);
     opacity: 1;
     visibility: visible;
+    margin-left: -70px;
 }
 
 .logo i {
