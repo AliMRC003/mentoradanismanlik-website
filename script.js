@@ -379,6 +379,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Special handling for Mentora section images with retry mechanism
+    const mentoraImages = document.querySelectorAll('.mentora-image-card img');
+    mentoraImages.forEach(img => {
+        let retryCount = 0;
+        const maxRetries = 3;
+        
+        const loadImage = () => {
+            // Mark as loading
+            img.setAttribute('data-loading', 'true');
+            
+            img.addEventListener('load', function handleLoad() {
+                img.style.opacity = '1';
+                img.classList.add('loaded');
+                img.setAttribute('data-loaded', 'true');
+                img.removeAttribute('data-loading');
+                img.removeEventListener('load', handleLoad);
+            }, { once: true });
+            
+            img.addEventListener('error', function handleError() {
+                retryCount++;
+                console.warn(`Image load failed for ${img.src}, retry ${retryCount}/${maxRetries}`);
+                
+                if (retryCount < maxRetries) {
+                    // Retry with a slight delay
+                    setTimeout(() => {
+                        const currentSrc = img.src;
+                        img.src = '';
+                        img.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'retry=' + retryCount;
+                    }, 1000 * retryCount);
+                } else {
+                    // After max retries, still show it to prevent white box
+                    img.style.opacity = '1';
+                    img.classList.add('loaded');
+                    img.setAttribute('data-loaded', 'true');
+                    img.removeAttribute('data-loading');
+                    console.error(`Image permanently failed to load: ${img.src}`);
+                }
+                img.removeEventListener('error', handleError);
+            }, { once: true });
+        };
+        
+        // If image is already loaded (cached), show it immediately
+        if (img.complete && img.naturalHeight !== 0) {
+            img.style.opacity = '1';
+            img.classList.add('loaded');
+            img.setAttribute('data-loaded', 'true');
+        } else {
+            loadImage();
+        }
+    });
+
     // Loading States for Buttons
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {

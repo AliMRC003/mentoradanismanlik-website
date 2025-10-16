@@ -392,6 +392,13 @@ body {
     display: block;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.mentora-image-card img.loaded,
+.mentora-image-card img[data-loaded="true"] {
+    opacity: 1;
 }
 
 /* Responsive Design for Mentora About */
