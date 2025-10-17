@@ -45,7 +45,6 @@ Bu belge, Mentora web sitesine uygulanan SEO optimizasyonlarını ve ek yapılma
 ### 9. **Genişletilmiş Schema.org**
 - ✓ Service Schema (hizmet bilgileri)
 - ✓ WebPage Schema
-- ✓ AggregateRating (4.9/5 - 30 değerlendirme)
 - ✓ EducationalOrganization
 - ✓ FAQPage
 
@@ -164,9 +163,9 @@ Sayfa içi linkler ekleyin:
 
 ### Google Arama Sonuçları
 1. **Zengin Snippet'ler:**
-   - ⭐⭐⭐⭐⭐ 4.9 (30 değerlendirme)
    - FAQ açılır menüleri
    - Breadcrumb navigasyon
+   - Hizmet bilgileri
 
 2. **Gelişmiş Sıralama:**
    - Anahtar kelimeler için daha iyi pozisyon
